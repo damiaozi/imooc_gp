@@ -17,6 +17,9 @@ import {
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Boy from './Boy'
+import ListViewTest from './ListViewTest'
+import FetchTest from './FetchTest'
+
 export default class imooc_gp extends Component {
   constructor(props) {
     super(props);
@@ -67,7 +70,8 @@ export default class imooc_gp extends Component {
             <View style={styles.page2}></View>
           </TabNavigator.Item>
         </TabNavigator> */}
-        <Navigator
+    {/*
+       <Navigator
           initialRoute={{
             component: Boy
           }}
@@ -77,6 +81,8 @@ export default class imooc_gp extends Component {
             return <Component navigator={navigator} {...route.params} />
           }}
         ></Navigator>
+    */} 
+    <FetchTest/>  
       </View>
     );
   }
