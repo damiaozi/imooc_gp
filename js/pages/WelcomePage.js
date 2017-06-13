@@ -7,9 +7,9 @@ import {
 	View,
 	Navigator
 } from 'react-native';
-// import NavigationBar from '../common/NavigationBar'
+import NavigationBar from '../common/NavigationBar'
 import HomePage from './HomePage'
-// import ListViewTest from './ListViewTest'
+import ListViewTest from '../../ListViewTest'
 export default class WelcomePage extends Component {
 	componentDidMount() {
 		this.timer = setTimeout(() => {
@@ -23,9 +23,11 @@ export default class WelcomePage extends Component {
 	}
 	render() {
 		return <View >
-		
+		<NavigationBar 
+			title='欢迎'
+		/>
 		<Text>欢迎</Text> 
-		
+		<ListViewTest />
 			</View>
 	}
 }
