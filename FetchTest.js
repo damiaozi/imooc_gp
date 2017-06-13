@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import NavigationBar from './NavigationBar'
+import HttpUtils from './HttpUtils'
 const url = 'http://rap.taobao.org/mockjsdata/11793/test';
 export default class FetchTest extends Component {
   constructor(props) {
@@ -18,30 +19,45 @@ export default class FetchTest extends Component {
     }
   }
   onLoad() {
-    fetch(url)
-      .then(response => response.json())
+    // fetch(url)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     this.setState({
+    //       result: JSON.stringify(result)
+    //     })
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       result: JSON.stringify(error)
+    //     })
+    //   })
+    HttpUtils.get(url)
       .then(result => {
         this.setState({
           result: JSON.stringify(result)
         })
       })
-      .catch(error => {
-        this.state({
-          result: JSON.stringify(error)
-        })
+
+    .catch(error => {
+      this.setState({
+        result: JSON.stringify(error)
       })
+    })
   }
 
   onSubmit(url, data) {
-    fetch(url, {
-        method: 'POST',
-        header: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => response.json())
+    // fetch(url, {
+    //     method: 'POST',
+    //     header: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(data)
+    //   })
+    //   .then(response => response.json())
+
+
+    HttpUtils.post(url, data)
       .then(result => {
         this.setState({
           result: JSON.stringify(result)

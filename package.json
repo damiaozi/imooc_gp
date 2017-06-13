@@ -10,6 +10,7 @@
     "react": "15.4.1",
     "react-native": "0.39.2",
     "react-native-easy-toast": "^1.0.6",
+    "react-native-scrollable-tab-view": "^0.6.6",
     "react-native-tab-navigator": "^0.3.3"
   },
   "devDependencies": {

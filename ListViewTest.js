@@ -70,22 +70,20 @@ export default class ListViewTest extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
+      rowHasChanged: (r1, r2) => {
+        r1 !== r2
+      }
     });
     this.state = {
       dataSource: ds.cloneWithRows(data.result),
-      isLoadding: false,
+      isLoadding: true,
     }
 
   }
 
   renderRow(item) {
     return <View style={styles.row}>
-        <TouchableOpacity    onPress = {
-        () => {
-          this.toast.show('你单击了:' + item.fullName, DURATION.LENGTH_LONG);
-        }
-      } >
+        <TouchableOpacity >
  
       <Text style={styles.tips}>
           {item.fullName}
@@ -96,62 +94,24 @@ export default class ListViewTest extends Component {
    </TouchableOpacity>
     </View>
   }
-  renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
-    return <View key={rowID} style={styles.line}>
-        
-      </View>
-  }
 
-  renderFooter() {
-    return <Image style={{width:400,height:100}} source={{uri:'https://images.gr-assets.com/hostedimages/1406479536ra/10555627.gif'}}/>
-  }
 
-  _onRefresh() {
-    // console.log('onLoad', onLoad);
-    this.setState({
-      isLoadding: true
-    });
-    setTimeout(() => {
 
-      this.setState({
-        isLoadding: false
-      })
-
-    }, 2000);
-  }
   render() {
 
     return (
       <View style={styles.container}>
-          <NavigationBar 
-              title={'ListViewTest'}
-           />
+        
            <ListView 
             dataSource = {
               this.state.dataSource
             }
             renderRow={(item)=>this.renderRow(item)}
-
-            refreshcontrol = { <RefreshControl
-                                  refreshing={this.state.isLoadding}
-              onRefresh = {
-        this._onRefresh.bind(this)
-              }
-                              />}
-
-            renderSeparator = {
-              (sectionID, rowID, adjacentRowHighlighted) => this.renderSeparator(sectionID, rowID, adjacentRowHighlighted) 
-            }
-            renderFooter={()=>this.renderFooter()}
-
-              
-            />
-          {/*
-            <Toast ref={toast=>{this.toast=toast}}/>
-          */}
+            ></ListView>
+    
             
       </View>
-    );
+    )
   }
 }
 
